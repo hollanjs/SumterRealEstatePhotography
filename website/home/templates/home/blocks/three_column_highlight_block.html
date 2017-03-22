@@ -1,0 +1,17 @@
+{% load wagtailcore_tags %}
+
+        <section class="text-center well well-sm text-md-left section-border">
+          <div class="container">
+            <div class="row flow-offset-2">  
+              <div class="col-md-4">
+                  {% include "home/includes/highlight_section_block.html" with blocks=self.left_column only %}
+              </div>
+              <div class="col-md-4">
+                  {% include "home/includes/highlight_section_block.html" with blocks=self.center_column only %}
+              </div>
+              <div class="col-md-4">
+                  {% include "home/includes/highlight_section_block.html" with blocks=self.right_column only %}
+              </div>
+            </div>
+          </div>
+        </section>

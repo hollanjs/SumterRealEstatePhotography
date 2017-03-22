@@ -1,0 +1,49 @@
+
+        <!--jQuery (necessary for Bootstrap's JavaScript plugins)-->
+        <!--Include all compiled plugins (below), or include individual files as needed-->
+
+        <!--Additional Functionality Scripts-->
+        
+
+        
+        
+        <script src="{% static "home/js/jquery.countdown.js" %}"></script>
+        
+        <script src="{% static "home/js/jquery.form.min.js" %}"></script>
+        
+        <script src="{% static "home/js/jquery.rd-mailform.min.js" %}"></script>
+        
+
+        
+        
+        
+        <script src="{% static "home/js/pointer-events.min.js" %}"></script>
+        
+        
+        
+        
+        <script src="{% static "home/js/progressbar.min.js" %}"></script>
+        <script src="{% static "home/js/jquery.countTo.js" %}"></script>
+        <script src="{% static "home/js/jquery.counter.js" %}"></script>
+        <script src="{% static "home/js/jquery.search.min.js" %}"></script>
+        <script src="{% static "home/js/TimeCircles.js" %}"></script>
+        <script src="{% static "home/js/jquery.magnific-popup.min.js" %}"></script>
+        <script src="{% static "home/js/isotope.pkgd.min.js" %}"></script>
+
+        <script src="{% static "home/js/bootstrap-sprockets.js" %}"></script>
+
+
+
+
+
+        
+        
+        <script src="{% static "home/js/smoothscroll.min.js" %}"></script>
+        <script src="{% static "home/js/scrollTo.js" %}"></script>
+        <script src="{% static "home/js/jquery.owl-carousel.js" %}"></script>
+        <script src="{% static "home/js/wow.min.js" %}"></script>
+        <script src="{% static "home/js/jquery.easy-responsive-tabs.min.js" %}"></script>
+        <script src="{% static "home/js/jquery.rd-google-map.min.js" %}"></script>
+        <script src="{% static "home/js/jquery.stacktable.min.js" %}"></script>
+        <script src="{% static "home/js/jQuery.MagnifierRentgen.min.js" %}"></script>
+        <script src="{% static "home/js/jquery.swiper.min.js" %}"></script>

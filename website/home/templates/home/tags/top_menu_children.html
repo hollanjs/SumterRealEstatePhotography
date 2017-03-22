@@ -1,0 +1,9 @@
+
+{% load custom_tags static wagtailcore_tags %}
+
+
+<ul class="rd-navbar-dropdown">
+    {% for child in menuitems_children %}
+        <li><a href="{% pageurl child %}">{{ child.title }}</a></li>
+    {% endfor %}
+</ul>

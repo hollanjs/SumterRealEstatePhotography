@@ -1,0 +1,55 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+ 
+{% if blocks %}
+ 
+                        {% for block in blocks %}
+                            {% if block.block_type == 'header_image' %}
+                                {% image block.value original as header_image %}
+    							<div data-speed="0.6" data-type="media" data-url="{{ header_image.url }}" class="rd-parallax-layer"></div>
+                            {% endif %}
+                        {% endfor %}
+
+                        <div data-speed="0.78" data-type="html" data-fade="true" class="well-parallax jumbotron text-center rd-parallax-layer">
+							<h1>
+		                        {% for block in blocks %}
+		                            {% if block.block_type == 'header_top_text' %}
+		                                {{ block.value }}
+		                            {% endif %}
+		                        {% endfor %}
+								
+		                        {% for block in blocks %}
+		                            {% if block.block_type == 'header_sub_text' %}
+		                                <small>{{ block.value }}</small>
+		                            {% endif %}
+		                        {% endfor %}
+							</h1>
+
+                        	{% for block in blocks %}
+	                            {% if block.block_type == 'header_info_text' %}
+							        <p class="big">{{ block.value }}</p>
+	                            {% endif %}
+	                        {% endfor %}
+	                        
+							<div class='btn-group-variant'>
+	                        	{% for block in blocks %}
+		                            {% if block.block_type == 'header_target_link' %}
+		                                <a class='btn btn-default round-xl btn-sm' href='{{ block.value }}'>
+		                            {% endif %}
+		                        {% endfor %}
+
+		                        {% for block in blocks %}
+		                            {% if block.block_type == 'header_cta' %}
+		                                {{ block.value }}</a> 
+		                            {% endif %}
+		                        {% endfor %}    
+					        </div>
+ 						</div>
+{% endif %}
+
+
+
+
+
+        
+            
+    

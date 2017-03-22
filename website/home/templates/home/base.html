@@ -1,0 +1,103 @@
+
+{% load compress static custom_tags cache wagtailuserbar wagtailcore_tags %}
+
+<!DOCTYPE html>
+    <head>
+    <!--Site Title-->
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+
+    <title>
+        {% block title %}
+            {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+        {% endblock %}
+        {% block title_suffix %}
+            {% with self.get_site.site_name as site_name %}
+                {% if site_name %}- {{ site_name }}{% endif %}
+            {% endwith %}
+        {% endblock %}
+    </title>
+
+    <!--Stylesheets-->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <!--Bootstrap-->
+    {# Global stylesheets #}
+
+        <link rel="stylesheet" type="text/css" href="{% static 'home/css/style.css' %}">
+
+    {% block extra_css %}
+        {# Override this in templates to add extra stylesheets #}
+    {% endblock %}
+<!--[if lt IE 10]>
+    <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/.."><img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
+    <script src="js/html5shiv.min.js"></script><[endif]-->
+  </head>
+
+  <body>
+    {# {% wagtailuserbar %} #}
+    <div class="page">
+        <header class="page-header dark">
+            {% block menu %}
+                {% get_site_root as site_root %}
+                {% top_menu parent=site_root calling_page=self %}
+            {% endblock %}
+            {% block section_header %}
+                
+            {% endblock %}
+        </header>
+
+        <!-- Bread Crumb -->
+        {% if self.get_ancestors|length > 1 %}
+            <ol class="breadcrumb section-border">
+                {% for page in self.get_ancestors %}
+                    {% if page.is_root == False %}
+                <li><a href=”{% pageurl page %}”>{{ page.title }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                <li class=”active”>{{ self.title }}</li>
+            </ol>
+        {% endif %}
+        <!-- End Bread Crumb -->
+        
+        {% block content %}{% endblock %}
+    </div>
+    {# Global javascript #}
+    <!--<script type="text/javascript" src="{% static 'home/js/website.js' %}"></script>-->
+
+    
+
+
+
+
+    {% compress js %}
+        <script src="{% static "home/js/core.min.js" %}"></script>
+        <script src="{% static "home/js/bootstrap.min.js" %}"></script>
+        <script src="{% static "home/js/html5shiv.min.js" %}"></script>
+        <script src="{% static "home/js/jquery.plugin.min.js" %}"></script>
+        <script src="{% static "home/js/jquery.rd-parallax.min.js" %}"></script>
+        <script src="{% static "home/js/jquery.ui.totop.min.js" %}"></script>
+        <script src="{% static "home/js/jquery.rd-navbar.min.js" %}"></script>
+        
+        <script src="{% static "home/js/script.js" %}"></script>
+    {% endcompress %}
+
+
+
+
+
+
+
+
+
+
+
+    {% block extra_js %}
+        {# Override this in templates to add extra javascript #}
+    {% endblock %}
+  
+  </body>
+</html>

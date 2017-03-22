@@ -1,0 +1,23 @@
+{% extends "home/base.html" %}
+{% load wagtailcore_tags custom_tags static wagtailimages_tags %}
+
+
+{% block body_class %}Template- Home Page{% endblock %}
+
+
+{% block section_header %}
+	<section>
+        {% for block in page.header %}
+            {% include_block block %}
+        {% endfor %}
+    </section>
+{% endblock section_header %}
+
+
+{% block content %}
+    <main class="page-content">
+        {% for block in page.body %}
+            {% include_block block %}
+        {% endfor %}
+    </main>
+{% endblock %}

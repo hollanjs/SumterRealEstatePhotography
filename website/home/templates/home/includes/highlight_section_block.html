@@ -1,0 +1,14 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+ 
+{% if blocks %}
+ 
+                        {% for block in blocks %}
+                            {% if block.block_type == 'heading' %}
+                                <h4>{{ block.value }}</h4>
+                                <hr class="short bg-primary">
+                            {% else %}
+                               <p>{{ block.value }}</p>
+                            {% endif %}
+                        {% endfor %}
+ 
+{% endif %}

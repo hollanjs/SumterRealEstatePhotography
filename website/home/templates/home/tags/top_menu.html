@@ -1,0 +1,58 @@
+{% load custom_tags static wagtailcore_tags %}
+{% get_site_root as site_root %}
+
+
+
+<!--RD Navbar-->
+<div class="rd-navbar-wrap">
+          <nav class="rd-navbar bg-white" data-layout="rd-navbar-fixed" data-hover-on="false" data-stick-up="false" data-sm-layout="rd-navbar-fullwidth" data-md-layout="rd-navbar-static">
+            <div class="rd-navbar-top-panel">
+              <div class="rd-navbar-inner">
+                <button data-rd-navbar-toggle=".list-inline, .fa-envelope, .fa-phone, .material-icons-shopping_cart" class="rd-navbar-collapse-toggle"><span></span></button><a href="mailto:#" class="fa-envelope">josh@sumterrealestatephotography.com</a><a href="callto:#" class="fa-phone">+1 (317) 531-8189</a>
+				<ul class="list-inline pull-right">
+					<li><a href="#" class="fa-facebook"></a></li>
+					<li><a href="#" class="fa-pinterest-p"></a></li>
+					<li><a href="#" class="fa-twitter"></a></li>
+					<li><a href="#" class="fa-google-plus"></a></li>
+					<li><a href="#" class="fa-instagram"></a></li>
+				</ul>
+			</div>
+		</div>
+
+			<div class="rd-navbar-inner">
+
+              <!--RD Navbar Panel-->
+              <div class="rd-navbar-panel">
+
+                <!--RD Navbar Toggle-->
+                <button data-rd-navbar-toggle=".rd-navbar" class="rd-navbar-toggle"><span></span></button>
+                <!--END RD Navbar Toggle-->
+
+                <!--RD Navbar Brand-->
+                <div class="rd-navbar-brand"><a href="{% pageurl site_root %}" title="{{ site_root.title }}"><img src="{% static "home/images/logo-2.png" %}" alt=""></a>
+                </div>
+                <!--END RD Navbar Brand-->
+              </div>
+              <!--END RD Navbar Panel-->
+
+              <div class="rd-navbar-nav-wrap">
+                <!--END RD Navbar Search-->
+				<!--RD Navbar Nav-->
+				<ul class="rd-navbar-nav">
+					{% for menuitem in menuitems %}
+						<li class="{% if menuitem.active %}active{% endif %}">
+							<a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+						{% if menuitem.show_dropdown %}
+							{% top_menu_children parent=menuitem %}
+						{% endif %}
+						</li>
+					{% endfor %}
+				</ul>
+				<!--END RD Navbar Nav-->
+			</div>
+			<!--END rd-navbar-nav-wrap-->
+		</div>
+		<!--END rd-navbar-inner-->
+	</nav>
+</div>
+<!--END RD Navbar-->

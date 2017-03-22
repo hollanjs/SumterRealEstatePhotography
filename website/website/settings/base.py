@@ -40,9 +40,8 @@ INSTALLED_APPS = [
     'wagtail.wagtailsearch',
     'wagtail.wagtailadmin',
     'wagtail.wagtailcore',
-
-    'modelcluster',
-    'taggit',
+    'wagtail.contrib.wagtailapi',
+    'wagtail.contrib.wagtailstyleguide',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,6 +49,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'compressor',
+    'modelcluster',
+    'taggit',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -120,6 +124,7 @@ USE_TZ = True
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
 ]
 
 STATICFILES_DIRS = [
@@ -132,6 +137,14 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+COMPRESS_ENABLED = True
+
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.cssmin.CSSMinFilter'
+]
+COMPRESS_JS_FILTERS = [
+    'compressor.filters.jsmin.JSMinFilter'
+]
 
 # Wagtail settings
 
