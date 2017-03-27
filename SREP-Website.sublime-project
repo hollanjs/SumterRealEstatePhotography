@@ -4,5 +4,9 @@
 		{
 			"path": "."
 		}
-	]
+	],
+
+	"suntax_override": {
+		"\\.html$": ["Djaneiro", "Syntaxes", "HTML (Django)"]
+	}
 }

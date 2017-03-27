@@ -1,0 +1,27 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<!--Swiper-->
+<div data-autoplay="5000" data-slide-effect="fade" data-loop="false" class="swiper-container swiper-slider">
+  <div class="jumbotron text-center">
+    {% if value.text %}
+      <h1>{{ value.text.header_top_text }}<small>{{ value.text.header_sub_text }}</small></h1>
+      <p class="big">{{ value.text.header_info_text }}</p>
+    {% endif %}
+    {% if value.links %}
+      <div class='btn-group-variant'> 
+        {% for link in value.links %}
+          <a class='btn btn-default round-xl btn-sm' href='{{ link.url_link.url }}'>{{ link.cta }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+  <div class="swiper-wrapper">
+    {% for photo in value.images %}
+      {% image photo original as swiper_image %}
+        <div data-slide-bg="{{ swiper_image.url }}" class="swiper-slide">
+          <div class="swiper-slide-caption"></div>
+        </div>
+    {% endfor %}
+  </div>
+</div>
