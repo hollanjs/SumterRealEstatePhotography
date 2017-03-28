@@ -1,0 +1,21 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<!--Start section-->
+<section class="text-center well well-sm well-sm--inset-1 section-border">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-lg-offset-1">
+
+        {% if value.text %}
+          <h1>{{ value.text.header_top_text }}</h1>
+          <p class="lead big">{{ value.text.header_info_text }}</p>
+        {% endif %}
+
+        {% image value.image original as photo %}
+        <img src="{{ photo.url }}" alt="" class="offset-2">
+
+      </div>
+    </div>
+  </div>
+</section>
+<!--End section-->

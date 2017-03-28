@@ -1,0 +1,24 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+
+<!--Start section-->
+<section class="text-center well well-sm text-md-left section-border">
+  <div class="container">
+    <div class="row flow-offset-2">
+
+      {% for service in value.services %}
+        <div class="col-xs-6 col-xs-6--mod-1 col-md-4">
+          <div class="box-md box-variant-1">
+            <div class="box__left box-md-inset-1"><span class="icon icon-md icon-primary material-icons-{{ service.service_icon }}"></span></div>
+            <div class="box__body box__middle">
+              <h5>{{ service.service_title }}</h5>
+            </div>
+          </div>
+          <p>{{ service.service_desc }}</p>
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+<!--End section-->

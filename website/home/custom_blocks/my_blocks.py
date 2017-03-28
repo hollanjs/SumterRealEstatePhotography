@@ -103,3 +103,80 @@ class RotatingImageBlock(blocks.StructBlock):
 		label = 'Rotating Image Header'
 
 
+class CenterImageWell(blocks.StructBlock):
+	text = blocks.StructBlock([
+		('header_top_text', blocks.CharBlock()),
+		('header_info_text', blocks.CharBlock()),
+		], icon = "doc-full", label = "Image Well Text")
+
+	image = ImageChooserBlock(default=0, required=True)
+
+	class Meta:
+		template = 'home/blocks/center_image_well.html'
+		icon = 'image'
+		label = 'Center Image Well w-Text'
+
+
+class HighlightWithIconBlock(blocks.StructBlock):
+	service_icon = blocks.CharBlock(default='camera', required=True)
+	service_title = blocks.CharBlock(required=True, default='service title')
+	service_desc = blocks.CharBlock(default='service description')
+
+	class Meta:
+		icon = "tick-inverse"
+		label = "Highlight Block w-Icon"
+
+
+class MutedHighlightWithYellowIconsBlock(blocks.StructBlock):
+	text = blocks.StructBlock([
+		('services_cta', blocks.CharBlock(default='Services', required=True)),
+		('services_info', blocks.CharBlock()),
+		], icon = "doc-full", label = "Image Well Text")
+
+	services = blocks.ListBlock(HighlightWithIconBlock())
+
+	class Meta:
+		template = 'home/blocks/muted_highlight_with_yellow_icons_block.html'
+		icon = 'group'
+		label = 'Gray Highlights w-Yellow Icons'
+
+
+class TiledServiceBlock(blocks.StructBlock):
+	services = blocks.ListBlock(HighlightWithIconBlock())
+
+	class Meta:
+		template = 'home/blocks/tiled_service_block.html'
+		icon = 'group'
+		label = 'Tiled Service Block'
+
+
+class Stat(blocks.StructBlock):
+	title = blocks.CharBlock(default='Stat')
+	number = blocks.IntegerBlock(default=0, required=True)
+
+	class Meta:
+		icon = 'plus'
+		label = 'Stat'
+
+
+class YellowStatBlock(blocks.StructBlock):
+	stats = blocks.ListBlock(Stat())
+
+	class Meta:
+		template = 'home/blocks/yellow_stat_block.html'
+		icon = 'plus'
+		label = 'Yellow Full-Width Stat Block'
+
+
+class HighlightWithStatBars(blocks.StructBlock):
+	text = blocks.StructBlock([
+		('header_top_text', blocks.CharBlock()),
+		('header_info_text', blocks.CharBlock()),
+		], icon = "doc-full", label = "Text Blurb")
+
+	stats = blocks.ListBlock(Stat())
+
+	class Meta:
+		template = 'home/blocks/highlight_with_stat_bars.html'
+		icon = 'plus'
+		label = 'Highlight Blurb w-Stats on Right'

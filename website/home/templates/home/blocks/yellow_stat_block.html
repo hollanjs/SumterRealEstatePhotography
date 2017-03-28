@@ -1,0 +1,17 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+
+<!--Start section-->
+<section class="bg-primary text-center">
+  <div class="container counter-panel">
+    <div class="row">
+    	{% for stat in value.stats %}
+	      <div class="col-xs-6 col-sm-6 col-md-3">
+	        <div data-from="0" data-to="{{ stat.number }}" class="counter"></div>
+	        <p class="text-bold text-uppercase">{{ stat.title }}</p>
+	      </div>
+    	{% endfor %}
+    </div>
+  </div>
+</section>
+<!--End section-->
