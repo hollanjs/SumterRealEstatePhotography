@@ -9,6 +9,7 @@ from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, \
 							InlinePanel, PageChooserPanel, StreamFieldPanel
 
 
+
 class ThreeColumnHighlightBlock(blocks.StructBlock):
 	left_column = blocks.StructBlock([
 		('heading', blocks.CharBlock(classname="full title")),
@@ -62,12 +63,12 @@ class OneColumnHighlightBlock(blocks.StructBlock):
 
 class SingleImageHeader(blocks.StructBlock):
 	header = blocks.StreamBlock([
-		('header_image', ImageChooserBlock(required=True)),
-		('header_top_text', blocks.CharBlock(required=True)),
+		('header_image', ImageChooserBlock(default=0, required=True)),
+		('header_top_text', blocks.CharBlock(default='Top Header Text', required=True)),
 		('header_sub_text', blocks.CharBlock()),
 		('header_info_text', blocks.CharBlock()),
-		('header_cta', blocks.CharBlock(required=True)),
-		('header_target_link', blocks.PageChooserBlock(required=True)),
+		('header_cta', blocks.CharBlock(default='Call To Action', required=True)),
+		('header_target_link', blocks.PageChooserBlock(default=0, required=True)),
 		], icon = "image", label = "Single Image Header")
 
 	class Meta:
@@ -77,8 +78,8 @@ class SingleImageHeader(blocks.StructBlock):
 
 
 class HeaderLinkBlock(blocks.StructBlock):
-	cta = blocks.CharBlock(required=True)
-	url_link = blocks.PageChooserBlock(required=True)
+	cta = blocks.CharBlock(default='Call To Action', required=True)
+	url_link = blocks.PageChooserBlock(default=0, required=True)
 	
 	class Meta:
 		icon = "image"
@@ -87,19 +88,18 @@ class HeaderLinkBlock(blocks.StructBlock):
 
 class RotatingImageBlock(blocks.StructBlock):
 	text = blocks.StructBlock([
-		('header_top_text', blocks.CharBlock(required=True)),
+		('header_top_text', blocks.CharBlock(default='Top Header Text', required=True)),
 		('header_sub_text', blocks.CharBlock()),
 		('header_info_text', blocks.CharBlock()),
 		], icon = "image", label = "Rotating Image Banner")
 
 	links = blocks.ListBlock(HeaderLinkBlock())
 
-	images = blocks.ListBlock(ImageChooserBlock(required=True))
+	images = blocks.ListBlock(ImageChooserBlock(default=0, required=True))
 
 	class Meta:
 		template = 'home/blocks/rotating_image_block.html'
 		icon = 'image'
 		label = 'Rotating Image Header'
-
 
 
